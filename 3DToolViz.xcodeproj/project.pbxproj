@@ -21,6 +21,7 @@
 		B2158E0827DC7B2F001A293A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2158E0727DC7B2F001A293A /* AppKit.framework */; };
 		B2158E1527DCE957001A293A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2158E1427DCE957001A293A /* OpenGL.framework */; };
 		B2158E3227DCF0E3001A293A /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2158E3127DCF0E3001A293A /* libGLEW.a */; };
+		B2EF06D92800A12900AFC479 /* GLShaderCompiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2EF06D72800A12900AFC479 /* GLShaderCompiler.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +59,11 @@
 		B2158E0727DC7B2F001A293A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		B2158E1427DCE957001A293A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		B2158E3127DCF0E3001A293A /* libGLEW.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGLEW.a; path = libs/libGLEW.a; sourceTree = "<group>"; };
+		B29D3F9B27DF9B7E008A12BA /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = shader.vert; path = ../../../../../../../../Documents/Learning/3DToolViz/shaders/shader.vert; sourceTree = BUILT_PRODUCTS_DIR; };
+		B29D3F9C27DF9BC0008A12BA /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = shader.frag; path = ../../../../Users/maheshmanni/Documents/Learning/3DToolViz/shaders/shader.frag; sourceTree = DEVELOPER_DIR; };
+		B2EF06D72800A12900AFC479 /* GLShaderCompiler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLShaderCompiler.cpp; sourceTree = "<group>"; };
+		B2EF06D82800A12900AFC479 /* GLShaderCompiler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GLShaderCompiler.hpp; sourceTree = "<group>"; };
+		B2EF06DB2802814500AFC479 /* shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shader.h; path = 3DToolViz/shader.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,8 @@
 		B2158DD727DC7381001A293A = {
 			isa = PBXGroup;
 			children = (
+				B2EF06D62800A0DE00AFC479 /* GLRender */,
+				B29D3F9A27DF9B57008A12BA /* shaders */,
 				B2158DEA27DC73BF001A293A /* ImGUI */,
 				B2158DE227DC7382001A293A /* 3DToolViz */,
 				B2158DE127DC7382001A293A /* Products */,
@@ -100,6 +108,7 @@
 		B2158DE227DC7382001A293A /* 3DToolViz */ = {
 			isa = PBXGroup;
 			children = (
+				B2EF06DB2802814500AFC479 /* shader.h */,
 				B2158DE327DC7382001A293A /* main.cpp */,
 			);
 			path = 3DToolViz;
@@ -137,6 +146,24 @@
 				B2158DFD27DC7A08001A293A /* libglfw3.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B29D3F9A27DF9B57008A12BA /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				B29D3F9B27DF9B7E008A12BA /* shader.vert */,
+				B29D3F9C27DF9BC0008A12BA /* shader.frag */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		B2EF06D62800A0DE00AFC479 /* GLRender */ = {
+			isa = PBXGroup;
+			children = (
+				B2EF06D72800A12900AFC479 /* GLShaderCompiler.cpp */,
+				B2EF06D82800A12900AFC479 /* GLShaderCompiler.hpp */,
+			);
+			path = GLRender;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +225,7 @@
 			files = (
 				B2158DE427DC7382001A293A /* main.cpp in Sources */,
 				B2158DFB27DC73F0001A293A /* imgui_widgets.cpp in Sources */,
+				B2EF06D92800A12900AFC479 /* GLShaderCompiler.cpp in Sources */,
 				B2158DF727DC73F0001A293A /* imgui_draw.cpp in Sources */,
 				B2158DF927DC73F0001A293A /* imgui_tables.cpp in Sources */,
 				B2158DFA27DC73F0001A293A /* imgui_demo.cpp in Sources */,

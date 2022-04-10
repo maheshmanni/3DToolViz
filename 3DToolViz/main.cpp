@@ -9,11 +9,15 @@
 #include "GL/glew.h"
 #include "imgui.h"
 #include "GLFW/glfw3.h"
-
+#include "shader.h"
 
 using namespace std;
 
-void init(GLFWwindow* window) { }
+void init(GLFWwindow* window) {
+    
+    Shader obj("../../../../../../../../Documents/Learning/3DToolViz/shaders/shader.vert",
+               "../../../../../../../../Documents/Learning/3DToolViz/shaders/shader.frag");
+}
 
 void display(GLFWwindow* window, double currentTime) {
    glClearColor(1.0, 0.0, 0.0, 1.0);
