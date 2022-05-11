@@ -13,15 +13,38 @@
 
 using namespace std;
 
+GLuint vbo;
+GLuint vao;
+Shader* pShader = nullptr;
 void init(GLFWwindow* window) {
     
-    Shader obj("../../../../../../../../Documents/Learning/3DToolViz/shaders/shader.vert",
-               "../../../../../../../../Documents/Learning/3DToolViz/shaders/shader.frag");
+   // Shader obj("../../../../../../../../Documents/Learning/3DToolViz/shaders/shader.vert",
+     //          "../../../../../../../../Documents/Learning/3DToolViz/shaders/shader.frag");
+    float vertices[] = {
+        -0.5f, -0.5f, 0.0f,
+         0.5f, -0.5f, 0.0f,
+         0.0f,  0.5f, 0.0f
+    };
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
 }
 
 void display(GLFWwindow* window, double currentTime) {
    glClearColor(1.0, 0.0, 0.0, 1.0);
    glClear(GL_COLOR_BUFFER_BIT);
+    if(!pShader)
+    {
+        pShader = new Shader("../../../../../../../../Documents/Learning/3DToolViz/shaders/shader.vert",
+                             "../../../../../../../../Documents/Learning/3DToolViz/shaders/shader.frag");
+    }
+    pShader->use();
+    glBindVertexArray(vao);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
 void error_callback(int error, const char* msg) {
@@ -51,7 +74,7 @@ int main(void) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwSetErrorCallback(error_callback);
     
-    GLFWwindow* window = glfwCreateWindow(600, 600, "Chapter2 - program1", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(600, 600, "3DToolViz", NULL, NULL);
     glfwMakeContextCurrent(window);
     if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }
     glfwSwapInterval(1);
